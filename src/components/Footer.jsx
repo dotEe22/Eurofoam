@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import logo from "../assets/Eurofoam_Logo.png"
 
 function Footer() {
   const [form, setForm] = useState({
@@ -28,7 +29,7 @@ function Footer() {
     <div className="px-6 md:px-8">
       <div className="mb-4">
         <img
-          src="./src/assets/Eurofoam_Logo.png"
+          src={logo}
           alt="Eurofoam Logo"
           className="w-20 h-20 object-contain"
         />
@@ -103,7 +104,7 @@ function Footer() {
 
   {/* Bottom Line */}
   <div className="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-    © {new Date().getFullYear()} Eurofoam. All Rights Reserved.
+    © {new Date().getFullYear()} Eli. All Rights Reserved.
   </div>
 </footer>
 

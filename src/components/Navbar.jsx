@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useScrollDirection } from "../hooks/useScrollDirection"
 import { Menu, X } from "lucide-react"
+import logo from "../assets/Eurofoam_Logo.png";
 
 function Navbar() {
   const scrollDirection = useScrollDirection()
@@ -26,7 +27,7 @@ function Navbar() {
         <div className="flex items-center space-x-3">
           <span className="inline-block w-12 h-12 rounded-full overflow-hidden shadow-md">
             <img
-              src="./src/assets/Eurofoam_Logo.png"
+              src= {logo}
               alt="Eurofoam Logo"
               className="w-full h-full object-cover rounded-full"
             />
