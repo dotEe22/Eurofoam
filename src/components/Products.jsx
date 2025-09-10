@@ -15,12 +15,11 @@ function ProductCard({ image, title, description }) {
 
   const limit = 150
   const isLong = description.length > limit
-  const displayText =
-    expanded || !isLong ? description : description.slice(0, limit) + "..."
+  const displayText = !isLong ? description : description.slice(0, limit) + "..."
 
   return (
-    <div className="flex flex-col bg-white  rounded-xl shadow-sm hover:shadow-md transition">
-      {/* Image container – only top corners rounded */}
+    <div className="relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition">
+      {/* Image container */}
       <div className="overflow-hidden rounded-t-xl">
         <img
           src={image}
@@ -34,16 +33,31 @@ function ProductCard({ image, title, description }) {
         <p className="text-gray-600 flex-grow">{displayText}</p>
         {isLong && (
           <button
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => setExpanded(true)}
             className="mt-2 text-red-600 font-medium hover:underline"
           >
-            {expanded ? "See less" : "See more"}
+            See more
           </button>
         )}
       </div>
+
+      {/* Overlay (only inside this card) */}
+      {expanded && (
+        <div className="absolute inset-0 bg-white bg-opacity-95 p-4 rounded-xl shadow-lg flex flex-col">
+          <h4 className="text-lg font-bold text-gray-900">{title}</h4>
+          <p className="text-gray-700 mt-2 overflow-y-auto">{description}</p>
+          <button
+            onClick={() => setExpanded(false)}
+            className="mt-4 self-end px-3 py-1 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600"
+          >
+            Close
+          </button>
+        </div>
+      )}
     </div>
   )
 }
+
 
 function Products() {
   return (
